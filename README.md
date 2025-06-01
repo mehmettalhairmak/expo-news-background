@@ -29,7 +29,7 @@ app/               # Screens and router
    npm install
    ```
 
-2. Set up required environment variables (e.g., `NEWS_API_KEY` in a `.env` file).
+2. Set up required environment variables (e.g., `EXPO_PUBLIC_NEWS_API_KEY` in a `.env` file).
 
 3. Start the app:
    ```bash
