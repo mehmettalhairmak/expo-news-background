@@ -1,50 +1,71 @@
-# Welcome to your Expo app 👋
+# Expo News Background App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project is a simple news application built with **TDD** (Test Driven Development), **DDD** (Domain Driven Design), and **BDD** (Behavior Driven Development) principles, leveraging the new background-task library introduced in **Expo SDK 53**.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Automatic News Updates with Background Task:** Uses Expo's new background-task API to fetch and update news in the background.
+- **Domain Driven Design (DDD):** Clean and maintainable architecture with domain, infrastructure, tasks, and UI layers.
+- **Test Driven Development (TDD) & Behavior Driven Development (BDD):** Comprehensive unit and behavior tests for all critical functions using Jest and Testing Library.
+- **Modern Navigation with Expo Router:** File-based routing for easy screen management.
+- **Local Data Storage with AsyncStorage:** News is stored on the device for offline access.
 
+## Folder Structure
+
+```
+src/
+  domain/          # Domain models and business logic (e.g., News, NewsService)
+  infrastructure/  # API and external service integrations (e.g., NewsAPI)
+  tasks/           # Background task definitions and management
+  utils/           # Utility functions (e.g., storage)
+  ui/              # UI components and tests
+app/               # Screens and router
+```
+
+## Getting Started
+
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
+2. Set up required environment variables (e.g., `NEWS_API_KEY` in a `.env` file).
 
+3. Start the app:
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Background Task Usage
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- **Definition and Registration:** The background task is defined and registered in `src/tasks/BackgroundNewsTask.ts`.
+- **How It Works:** The task periodically fetches news from the API and saves it to local storage.
+- **Register/Unregister Functions:**
+  ```ts
+  await registerNewsBackgroundTask();
+  await unregisterNewsBackgroundTask();
+  ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Testing
 
-## Get a fresh project
+- **To run tests:**
+  ```bash
+  npm test
+  ```
+- **Coverage:** Unit and behavior tests are provided for domain services, background tasks, storage utilities, and UI components.
+- **BDD Approach:** Tests are written in a behavior-driven style using `describe/it` blocks.
 
-When you're ready, run:
+## DDD Principles
 
-```bash
-npm run reset-project
-```
+- **Domain Layer:** Business logic and news models are separated in `src/domain/news/News.ts` and `NewsService.ts`.
+- **Infrastructure Layer:** API calls and external services are isolated under `src/infrastructure`.
+- **Tasks Layer:** Background tasks are managed in a dedicated layer.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Contributing & Development
 
-## Learn more
+- Writing tests first (TDD) and keeping business logic in the domain layer (DDD) is encouraged.
+- Please add relevant unit tests when introducing new features.
 
-To learn more about developing your project with Expo, look at the following resources:
+## License
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+MIT
