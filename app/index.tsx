@@ -42,7 +42,7 @@ export default function HomePage() {
           renderItem={({ item, index }) => (
             <NewsItem
               item={item}
-              onPress={() => router.push(`/news/${index}`)}
+              onPress={() => router.push({ pathname: "/news/[id]", params: { id: item.id } })}
             />
           )}
           keyExtractor={(item) => item.id.toString()}
