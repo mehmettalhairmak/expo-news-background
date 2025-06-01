@@ -45,7 +45,7 @@ export default function HomePage() {
               onPress={() => router.push(`/news/${index}`)}
             />
           )}
-          keyExtractor={(_, idx) => idx.toString()}
+          keyExtractor={(item) => item.id.toString()}
           refreshControl={<RefreshControl refreshing={loading} onRefresh={loadNews} />}
         />}
     </View>
