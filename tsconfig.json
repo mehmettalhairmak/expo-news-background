@@ -3,9 +3,13 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"],
+      "@/domain/*": ["./src/domain/*"],
+      "@/infrastructure/*": ["./src/infrastructure/*"],
+      "@/utils/*": [
+        "./src/utils/*"
+      ],
+      "@/tasks/*": ["./src/tasks/*"]
     }
   },
   "include": [
