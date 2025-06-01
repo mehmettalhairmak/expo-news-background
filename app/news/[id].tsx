@@ -12,7 +12,8 @@ export default function NewsDetail() {
   useEffect(() => {
     (async () => {
       const allNews = await getStoredNews();
-      setNews(allNews[Number(id)]);
+      const selectedNews = allNews.find((newsItem) => newsItem.id === id);
+      setNews(selectedNews || null);
     })();
   }, [id]);
 
